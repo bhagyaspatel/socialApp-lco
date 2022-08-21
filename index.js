@@ -3,7 +3,7 @@ const app = express();
 
 const format = require('date-format');
 
-const PORT = 4000 || process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 //at the time of deployment we want some of our variables to be coming from a central location and usually that location is process.env.PORT 
 
