@@ -5,6 +5,13 @@ const format = require('date-format');
 
 const PORT = process.env.PORT || 4000;
 
+//swagger docs related
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 //at the time of deployment we want some of our variables to be coming from a central location and usually that location is process.env.PORT 
 
 app.get("/", (req, res) => {

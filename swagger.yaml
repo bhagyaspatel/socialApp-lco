@@ -1,0 +1,79 @@
+openapi : 3.0.0
+info : 
+  title : SocialApp
+  description : This is my first swagger documentation of LCO 
+  version : 1.0.1
+
+servers:
+  - url: http://localhost:4000/api/v1
+    description: localhost version of our app
+  - url: http://staging-api.example.com
+    description: this is just a dummy url, it doesnt work
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /instagram:
+    get:
+      summary: returns username, followers, followoing
+      responses:
+        '200' : #satus code
+          description: returns an object  
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  followings:
+                    type : string 
+                  date:
+                    type : string
+    post: #we dont have a post request in our app but this is to show that post & get is similar
+      summary: returns username, followers, followoing
+      responses:
+        '200' : #satus code
+          description: returns an object  
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  followers:
+                    type: string
+                  followings:
+                    type : string 
+                  date:
+                    type : string
+  /{token}:
+    get: 
+      summary: returns whatever there is in parameters
+      parameters :
+        - name: token
+          default: 5
+          in : path
+          schema :
+            type : string
+      responses:          
+        '200' :
+          description: returns an object  
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  params:
+                    type: string
+                  
